@@ -21,15 +21,12 @@
   <script type="text/javascript">
   function init() {
     console.log("JS INIZIATO");
-    console.log(emilie.visualizza());
     console.log(simulazione.visualizza());
 
     setInterval(() => aggiornaBind(),1000);
   }
-  function aggiungi() { emilie.aggiungi(); emilieLav.aggiungi(); aggiornaBind(); }
+  function aggiungi() { aggiornaBind(); }
   function aggiornaBind() {
-    var emiliePar = document.getElementById("emiliePar");
-    emiliePar.innerHTML = emilie.visualizza();
     var emilieLavPar = document.getElementById("emilieLavPar");
     emilieLavPar.innerHTML = emilieLav.visualizza();
     var tempo = document.getElementById("tempo");
@@ -39,7 +36,6 @@
 </head>
 <body onload="init()">
   <h1>Gestionale - Cantiere</h1>
-  <p id="emiliePar">info</p>
   <p id="emilieLavPar">info</p>
   <p id="tempo"></p>
   <button onclick="aggiungi()">Aggiungi</button>

@@ -4,16 +4,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Elemento = (function () {
-    function Elemento(nome, costo, quantita) {
+    function Elemento(nome, costo) {
         this.nome = nome;
         this.costo = costo;
-        this.quantita = quantita;
     }
     Elemento.prototype.visualizza = function () {
-        return "nome: " + this.nome + " | costo: " + this.costo + " | quantita: " + this.quantita;
-    };
-    Elemento.prototype.aggiungi = function () {
-        this.quantita = this.quantita + 1;
+        return "nome: " + this.nome + " | costo: " + this.costo;
     };
     return Elemento;
 }());
@@ -32,8 +28,34 @@ var LavoratoreTipo;
 ;
 var Lavoratore = (function (_super) {
     __extends(Lavoratore, _super);
-    function Lavoratore(nome, costo, quantita, tipologia) {
-        _super.call(this, nome, costo, quantita);
+    function Lavoratore(nome, tipologia) {
+        if (tipologia == LavoratoreTipo.Manovale) {
+            _super.call(this, nome, 180);
+        }
+        if (tipologia == LavoratoreTipo.Muratore) {
+            _super.call(this, nome, 220);
+        }
+        if (tipologia == LavoratoreTipo.Carpentiere) {
+            _super.call(this, nome, 240);
+        }
+        if (tipologia == LavoratoreTipo.Elettricista) {
+            _super.call(this, nome, 300);
+        }
+        if (tipologia == LavoratoreTipo.Idraulico) {
+            _super.call(this, nome, 300);
+        }
+        if (tipologia == LavoratoreTipo.Preposto) {
+            _super.call(this, nome, 280);
+        }
+        if (tipologia == LavoratoreTipo.Direttore) {
+            _super.call(this, nome, 300);
+        }
+        if (tipologia == LavoratoreTipo.Architetto) {
+            _super.call(this, nome, 400);
+        }
+        if (tipologia == LavoratoreTipo.Ingegnere) {
+            _super.call(this, nome, 400);
+        }
         this.tipologia = tipologia;
     }
     Lavoratore.prototype.visualizza = function () {
@@ -41,5 +63,4 @@ var Lavoratore = (function (_super) {
     };
     return Lavoratore;
 }(Elemento));
-var emilie = new Elemento("Emilie", 10.50, 1);
-var emilieLav = new Lavoratore("Emilie", 10.50, 1, LavoratoreTipo.Architetto);
+var emilieLav = new Lavoratore("Emilie", LavoratoreTipo.Architetto);

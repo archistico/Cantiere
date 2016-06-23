@@ -1,20 +1,14 @@
 class Elemento {
   nome: string;
   costo: number;
-  quantita: number;
 
-  constructor(nome: string, costo:number, quantita: number) {
+  constructor(nome: string, costo: number) {
     this.nome = nome;
     this.costo = costo;
-    this.quantita = quantita;
   }
 
   visualizza() {
-    return "nome: "+ this.nome +" | costo: " + this.costo +" | quantita: "+ this.quantita;
-  }
-
-  aggiungi() {
-    this.quantita = this.quantita +1;
+    return "nome: "+ this.nome +" | costo: " + this.costo;
   }
 }
 
@@ -23,22 +17,23 @@ enum LavoratoreTipo { Manovale, Muratore, Carpentiere, Elettricista, Idraulico, 
 class Lavoratore extends Elemento {
   tipologia : LavoratoreTipo;
 
-  constructor(nome: string, costo: number, quantita: number, tipologia: LavoratoreTipo)
+  constructor(nome: string, tipologia: LavoratoreTipo)
   {
-    super(nome, costo, quantita);
+    if(tipologia==LavoratoreTipo.Manovale) { super(nome, 180);}
+    if(tipologia==LavoratoreTipo.Muratore) { super(nome, 220);}
+    if(tipologia==LavoratoreTipo.Carpentiere) { super(nome, 240);}
+    if(tipologia==LavoratoreTipo.Elettricista) { super(nome, 300);}
+    if(tipologia==LavoratoreTipo.Idraulico) { super(nome, 300);}
+    if(tipologia==LavoratoreTipo.Preposto) { super(nome, 280);}
+    if(tipologia==LavoratoreTipo.Direttore) { super(nome, 300);}
+    if(tipologia==LavoratoreTipo.Architetto) { super(nome, 400);}
+    if(tipologia==LavoratoreTipo.Ingegnere) { super(nome, 400);}
     this.tipologia = tipologia;
   }
 
   visualizza() {
     return super.visualizza() + " | tipologia: " + LavoratoreTipo[this.tipologia];
-    //return this.nome +" - " + this.costo +" - "+ LavoratoreTipo[this.tipologia];
   }
 }
 
-var emilie:Elemento = new Elemento("Emilie", 10.50, 1);
-var emilieLav:Lavoratore = new Lavoratore("Emilie", 10.50, 1, LavoratoreTipo.Architetto);
-
-// let button = document.createElement('button');
-// button.textContent = "Visualizza";
-// button.onclick = function() { alert(emilieLav.visualizza()); }
-//document.body.appendChild(button);
+var emilieLav:Lavoratore = new Lavoratore("Emilie", LavoratoreTipo.Architetto);
