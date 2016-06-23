@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Cantiere - Gestionale</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Cantiere - Gestionale</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="elemento.js"></script>
-    <script type="text/javascript">
-      function init() {
-        console.log(emilie.visualizza());
-      }
-    </script>
-  </head>
-  <body onload="init()">
-    <h1>Gestionale - Cantiere</h1>
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="elemento.js"></script>
+  <script type="text/javascript">
+  function init() {
+    console.log("JS INIZIATO");
+    console.log(emilie.visualizza());
+    aggiornaBind();
+  }
+  function aggiungi() { emilie.aggiungi(); emilieLav.aggiungi(); aggiornaBind(); }
+  function aggiornaBind() {
+    var emiliePar = document.getElementById("emiliePar");
+    emiliePar.innerHTML = emilie.visualizza();
+    var emilieLavPar = document.getElementById("emilieLavPar");
+    emilieLavPar.innerHTML = emilieLav.visualizza();
+  }
+  </script>
+</head>
+<body onload="init()">
+  <h1>Gestionale - Cantiere</h1>
+  <p id="emiliePar">info</p>
+  <p id="emilieLavPar">info</p>
+  <button onclick="aggiungi()">Aggiungi</button>
+  <ul class="nav nav-tabs" id="mioTab">
+    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+    <li><a href="#uno" data-toggle="tab">Uno</a></li>
+    <li><a href="#due" data-toggle="tab">Due</a></li>
+    <li><a href="#tre" data-toggle="tab">Tre</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="home"><h1>Home</h1>
+      <p> Lorem ipsum dolor sit amet ... <p>
+      </div>
+      <div class="tab-pane" id="uno"><h1>Uno</h1>
+        <p>Curabitur pretium tincidunt lacus...</p>
+      </div>
+      <div class="tab-pane" id="due"><h1>Due</h1>
+        <p>Proin nonummy...</p></div>
+        <div class="tab-pane" id="tre"><h1>Tre</h1>
+          <p>Fusce convallis,...</p>
+        </div>
+  </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+</body>
 </html>
