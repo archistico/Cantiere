@@ -17,11 +17,14 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <script src="elemento.js"></script>
+  <script src="tempo.js"></script>
   <script type="text/javascript">
   function init() {
     console.log("JS INIZIATO");
     console.log(emilie.visualizza());
-    aggiornaBind();
+    console.log(simulazione.visualizza());
+
+    setInterval(() => aggiornaBind(),1000);
   }
   function aggiungi() { emilie.aggiungi(); emilieLav.aggiungi(); aggiornaBind(); }
   function aggiornaBind() {
@@ -29,6 +32,8 @@
     emiliePar.innerHTML = emilie.visualizza();
     var emilieLavPar = document.getElementById("emilieLavPar");
     emilieLavPar.innerHTML = emilieLav.visualizza();
+    var tempo = document.getElementById("tempo");
+    tempo.innerHTML = simulazione.visualizza();
   }
   </script>
 </head>
@@ -36,6 +41,7 @@
   <h1>Gestionale - Cantiere</h1>
   <p id="emiliePar">info</p>
   <p id="emilieLavPar">info</p>
+  <p id="tempo"></p>
   <button onclick="aggiungi()">Aggiungi</button>
   <ul class="nav nav-tabs" id="mioTab">
     <li class="active"><a href="#tabCantieri" data-toggle="tab">Cantieri</a></li>
