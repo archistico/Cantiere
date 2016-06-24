@@ -29,8 +29,8 @@
   function caricaListaMateriali() {
     var TabellaMateriali = document.getElementById("TabellaMateriali");
     TabellaMateriali.innerHTML = listaMateriali.righeTabella();
-
   }
+
   function compra(tipo) {
     var costo = listaMateriali.compra(tipo);
     simulazione.soldi -= costo;
@@ -38,10 +38,7 @@
     TabellaMateriali.innerHTML = listaMateriali.righeTabella();
   }
 
-  function aggiungi() { aggiornaBind(); }
   function aggiornaBind() {
-    var emilieLavPar = document.getElementById("emilieLavPar");
-    emilieLavPar.innerHTML = emilieLav.visualizza();
     var tempo = document.getElementById("tempo");
     tempo.innerHTML = simulazione.visualizza();
   }
@@ -49,27 +46,44 @@
 </head>
 <body onload="init()">
   <h1>Gestionale - Cantiere</h1>
-  <p id="emilieLavPar">info</p>
   <p id="tempo"></p>
-  <button onclick="aggiungi()">Aggiungi</button>
   <ul class="nav nav-tabs" id="mioTab">
     <li class="active"><a href="#tabCantieri" data-toggle="tab">Cantieri</a></li>
     <li><a href="#tabLavoratori" data-toggle="tab">Lavoratori</a></li>
-    <li><a href="#tabMateriali" data-toggle="tab">Materiali</a></li>
+    <li><a href="#tabMateriali" data-toggle="tab" onclick="caricaListaMateriali()">Materiali</a></li>
     <li><a href="#tabAttrezzature" data-toggle="tab">Attrezzature</a></li>
-    <li><a href="#tabTempo" data-toggle="tab">Tempo</a></li>
-    <li><a href="#tabStatistiche" data-toggle="tab">Statistiche</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tabCantieri"><h1>Cantieri</h1>
-      <p></p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Cantiere</th>
+            <th>Costo</th>
+            <th>Requisiti</th>
+            <th>Completamento</th>
+            <th>Modifiche</th>
+          </tr>
+        </thead>
+        <tbody id="TabellaCantieri">
+        </tbody>
+      </table>
     </div>
     <div class="tab-pane" id="tabLavoratori"><h1>Lavoratori</h1>
-      <p></p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th>Tipologia</th>
+            <th>Costo orario</th>
+            <th>Modifiche</th>
+          </tr>
+        </thead>
+        <tbody id="TabellaLavoratori">
+        </tbody>
+      </table>
     </div>
     <div class="tab-pane" id="tabMateriali"><h1>Materiali</h1>
-      <button onclick="caricaListaMateriali()">Carica</button>
-      <p id="materiali"></p>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -84,13 +98,18 @@
       </table>
     </div>
     <div class="tab-pane" id="tabAttrezzature"><h1>Attrezzature</h1>
-      <p></p>
-    </div>
-    <div class="tab-pane" id="tabTempo"><h1>Tempo</h1>
-      <p></p>
-    </div>
-    <div class="tab-pane" id="tabStatistiche"><h1>Statistiche</h1>
-      <p></p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th>Attrezzatura</th>
+            <th>Costo</th>
+            <th>Modifiche</th>
+          </tr>
+        </thead>
+        <tbody id="TabellaAttrezzature">
+        </tbody>
+      </table>
     </div>
   </div>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

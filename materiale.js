@@ -55,4 +55,3 @@ var sabbia = new Materiale(MaterialeTipo.Sabbia, 200);
 var listaMateriali = new Materiali();
 listaMateriali.lista.push(cemento);
 listaMateriali.lista.push(legno);
-listaMateriali.compra(cemento);
