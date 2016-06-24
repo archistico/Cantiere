@@ -19,6 +19,7 @@
   <script src="elemento.js"></script>
   <script src="tempo.js"></script>
   <script src="materiale.js"></script>
+  <script src="attrezzatura.js"></script>
   <script type="text/javascript">
   function init() {
     console.log("JS INIZIATO");
@@ -31,11 +32,21 @@
     TabellaMateriali.innerHTML = listaMateriali.righeTabella();
   }
 
-  function compra(tipo) {
+  function compraMateriale(tipo) {
     var costo = listaMateriali.compra(tipo);
     simulazione.soldi -= costo;
-    var TabellaMateriali = document.getElementById("TabellaMateriali");
-    TabellaMateriali.innerHTML = listaMateriali.righeTabella();
+    caricaListaMateriali();
+  }
+
+  function caricaListaAttrezzature() {
+    var TabellaAttrezzature = document.getElementById("TabellaAttrezzature");
+    TabellaAttrezzature.innerHTML = listaAttrezzature.righeTabella();
+  }
+
+  function compraAttrezzatura(tipo) {
+    var costo = listaAttrezzature.compra(tipo);
+    simulazione.soldi -= costo;
+    caricaListaAttrezzature();
   }
 
   function aggiornaBind() {
@@ -51,7 +62,7 @@
     <li class="active"><a href="#tabCantieri" data-toggle="tab">Cantieri</a></li>
     <li><a href="#tabLavoratori" data-toggle="tab">Lavoratori</a></li>
     <li><a href="#tabMateriali" data-toggle="tab" onclick="caricaListaMateriali()">Materiali</a></li>
-    <li><a href="#tabAttrezzature" data-toggle="tab">Attrezzature</a></li>
+    <li><a href="#tabAttrezzature" data-toggle="tab" onclick="caricaListaAttrezzature()">Attrezzature</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tabCantieri"><h1>Cantieri</h1>

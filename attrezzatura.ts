@@ -2,25 +2,51 @@ enum AttrezzaturaTipo { Base, Cavalletto, Trabattello, Furgone, CamionPiccolo, C
 
 class Attrezzatura extends Elemento {
   tipologia : AttrezzaturaTipo;
-  consumoMax : number;
-  consumo   : number;
+  quantita : number;
 
-  constructor(tipologia: AttrezzaturaTipo, consumoMax : number)
+  constructor(tipologia: AttrezzaturaTipo, costo : number)
   {
-    if(tipologia==AttrezzaturaTipo.Base) { super(150);}
+    super(costo);
     this.tipologia = tipologia;
-    this.consumoMax = consumoMax;
-    this.consumo = 0;
+    this.quantita = 0;
   }
 
   visualizza() {
-    return "Attrezzatura: " + super.visualizza() + " | tipologia: " + AttrezzaturaTipo[this.tipologia];
+    return "Attrezzatura: " + super.visualizza() + " | tipologia: " + MaterialeTipo[this.tipologia];
   }
 
-  usa():number {
-    if(this.consumo < this.consumoMax) { this.consumo-=1; return 1; }
-    return 0;
+  compra() : number { this.quantita+=1; return this.costo; }
+}
+
+class Attrezzature {
+  public lista : Array<Attrezzatura> = Array<Attrezzatura>();
+
+  visualizza() {
+    var risultato : string = "";
+    for(var c=0; c<this.lista.length; c++ ) { risultato += AttrezzaturaTipo[this.lista[c].tipologia] + "<br>"; }
+    return risultato;
+  }
+
+  righeTabella() {
+    //<tr><th scope="row">100</th><td>Legno</td><td>3000 €</td><td><button>-</button><button>+</button></td></tr>
+    var risultato : string = "";
+    for(var c=0; c<this.lista.length; c++ ) {
+      risultato += "<tr><th scope='row'>"+this.lista[c].quantita+"</th><td>"+AttrezzaturaTipo[this.lista[c].tipologia]+"</td><td>"+this.lista[c].costo+" €</td><td><button>-</button><button onclick='compraAttrezzatura("+AttrezzaturaTipo[this.lista[c].tipologia].toLowerCase()+")'>+</button></td></tr>";
+    }
+    return risultato;
+  }
+
+  compra(tipo : Attrezzatura) : number {
+      return this.lista[this.lista.indexOf(tipo)].compra();
+  }
+
+  quantita(tipo : Attrezzatura)
+  {
+    return this.lista[this.lista.indexOf(tipo)].quantita;
   }
 }
 
-var attr1:Attrezzatura = new Attrezzatura(AttrezzaturaTipo.Base, 50);
+var base:Attrezzatura = new Attrezzatura(AttrezzaturaTipo.Base, 150);
+
+var listaAttrezzature: Attrezzature = new Attrezzature();
+listaAttrezzature.lista.push(base);
