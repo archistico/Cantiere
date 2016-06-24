@@ -26,11 +26,18 @@
 
     setInterval(() => aggiornaBind(),1000);
   }
-  function caricaMateriali() {
-    var materialiPar = document.getElementById("materiali");
-    materialiPar.innerHTML = listaMateriali.visualizza();
+  function caricaListaMateriali() {
+    var TabellaMateriali = document.getElementById("TabellaMateriali");
+    TabellaMateriali.innerHTML = listaMateriali.righeTabella();
 
   }
+  function compra(tipo) {
+    var costo = listaMateriali.compra(tipo);
+    simulazione.soldi -= costo;
+    var TabellaMateriali = document.getElementById("TabellaMateriali");
+    TabellaMateriali.innerHTML = listaMateriali.righeTabella();
+  }
+
   function aggiungi() { aggiornaBind(); }
   function aggiornaBind() {
     var emilieLavPar = document.getElementById("emilieLavPar");
@@ -61,8 +68,20 @@
       <p></p>
     </div>
     <div class="tab-pane" id="tabMateriali"><h1>Materiali</h1>
-      <button onclick="caricaMateriali()">Carica</button>
+      <button onclick="caricaListaMateriali()">Carica</button>
       <p id="materiali"></p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th>Materiale</th>
+            <th>Costo</th>
+            <th>Modifiche</th>
+          </tr>
+        </thead>
+        <tbody id="TabellaMateriali">
+        </tbody>
+      </table>
     </div>
     <div class="tab-pane" id="tabAttrezzature"><h1>Attrezzature</h1>
       <p></p>

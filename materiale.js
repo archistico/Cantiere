@@ -12,18 +12,15 @@ var MaterialeTipo;
 ;
 var Materiale = (function (_super) {
     __extends(Materiale, _super);
-    function Materiale(tipologia) {
-        if (tipologia == MaterialeTipo.Legno) {
-            _super.call(this, 1500);
-        }
-        if (tipologia == MaterialeTipo.Cemento) {
-            _super.call(this, 150);
-        }
+    function Materiale(tipologia, costo) {
+        _super.call(this, costo);
         this.tipologia = tipologia;
+        this.quantita = 0;
     }
     Materiale.prototype.visualizza = function () {
         return "Materiale: " + _super.prototype.visualizza.call(this) + " | tipologia: " + MaterialeTipo[this.tipologia];
     };
+    Materiale.prototype.compra = function () { this.quantita += 1; return this.costo; };
     return Materiale;
 }(Elemento));
 var Materiali = (function () {
@@ -37,12 +34,25 @@ var Materiali = (function () {
         }
         return risultato;
     };
+    Materiali.prototype.righeTabella = function () {
+        var risultato = "";
+        for (var c = 0; c < this.lista.length; c++) {
+            risultato += "<tr><th scope='row'>" + this.lista[c].quantita + "</th><td>" + MaterialeTipo[this.lista[c].tipologia] + "</td><td>" + this.lista[c].costo + " €</td><td><button>-</button><button onclick='compra(" + MaterialeTipo[this.lista[c].tipologia].toLowerCase() + ")'>+</button></td></tr>";
+        }
+        return risultato;
+    };
+    Materiali.prototype.compra = function (tipo) {
+        return this.lista[this.lista.indexOf(tipo)].compra();
+    };
+    Materiali.prototype.quantita = function (tipo) {
+        return this.lista[this.lista.indexOf(tipo)].quantita;
+    };
     return Materiali;
 }());
-var mat1 = new Materiale(MaterialeTipo.Legno);
-var mat2 = new Materiale(MaterialeTipo.Cemento);
-var mat3 = new Materiale(MaterialeTipo.Legno);
+var cemento = new Materiale(MaterialeTipo.Cemento, 600);
+var legno = new Materiale(MaterialeTipo.Legno, 1500);
+var sabbia = new Materiale(MaterialeTipo.Sabbia, 200);
 var listaMateriali = new Materiali();
-listaMateriali.lista.push(mat1);
-listaMateriali.lista.push(mat2);
-listaMateriali.lista.push(mat3);
+listaMateriali.lista.push(cemento);
+listaMateriali.lista.push(legno);
+listaMateriali.compra(cemento);

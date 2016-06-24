@@ -21,7 +21,7 @@ var Tempo = (function () {
         var minutes = parseInt(((diff / 60) % 60).toString());
         var seconds = diff % 60;
         var result = (hours < 10 ? "0" + hours : hours) + "-" + (minutes < 10 ? "0" + minutes : minutes) + "-" + (seconds < 10 ? "0" + seconds : seconds);
-        return "D:" + days + " H:" + hours + " M:" + minutes + " S:" + seconds;
+        return "Soldi: " + this.soldi + " D:" + days + " H:" + hours + " M:" + minutes + " S:" + seconds;
     };
     Tempo.prototype.checkTime = function (i) {
         if (i < 10) {

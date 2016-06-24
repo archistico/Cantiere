@@ -34,7 +34,7 @@ class Tempo
 
     var result = (hours < 10 ? "0" + hours : hours) + "-" + (minutes < 10 ? "0" + minutes : minutes) + "-" + (seconds  < 10 ? "0" + seconds : seconds);
 
-    return "D:"+ days + " H:" + hours + " M:" + minutes + " S:"+seconds;
+    return "Soldi: "+this.soldi + " D:"+ days + " H:" + hours + " M:" + minutes + " S:"+seconds;
   }
 
   private checkTime(i) {
