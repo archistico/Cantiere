@@ -4,12 +4,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Elemento = (function () {
-    function Elemento(nome, costo) {
-        this.nome = nome;
+    function Elemento(costo) {
         this.costo = costo;
     }
     Elemento.prototype.visualizza = function () {
-        return "nome: " + this.nome + " | costo: " + this.costo;
+        return "costo: " + this.costo;
     };
     return Elemento;
 }());
@@ -28,39 +27,39 @@ var LavoratoreTipo;
 ;
 var Lavoratore = (function (_super) {
     __extends(Lavoratore, _super);
-    function Lavoratore(nome, tipologia) {
+    function Lavoratore(tipologia) {
         if (tipologia == LavoratoreTipo.Manovale) {
-            _super.call(this, nome, 180);
+            _super.call(this, 180);
         }
         if (tipologia == LavoratoreTipo.Muratore) {
-            _super.call(this, nome, 220);
+            _super.call(this, 220);
         }
         if (tipologia == LavoratoreTipo.Carpentiere) {
-            _super.call(this, nome, 240);
+            _super.call(this, 240);
         }
         if (tipologia == LavoratoreTipo.Elettricista) {
-            _super.call(this, nome, 300);
+            _super.call(this, 300);
         }
         if (tipologia == LavoratoreTipo.Idraulico) {
-            _super.call(this, nome, 300);
+            _super.call(this, 300);
         }
         if (tipologia == LavoratoreTipo.Preposto) {
-            _super.call(this, nome, 280);
+            _super.call(this, 280);
         }
         if (tipologia == LavoratoreTipo.Direttore) {
-            _super.call(this, nome, 300);
+            _super.call(this, 300);
         }
         if (tipologia == LavoratoreTipo.Architetto) {
-            _super.call(this, nome, 400);
+            _super.call(this, 400);
         }
         if (tipologia == LavoratoreTipo.Ingegnere) {
-            _super.call(this, nome, 400);
+            _super.call(this, 400);
         }
         this.tipologia = tipologia;
     }
     Lavoratore.prototype.visualizza = function () {
-        return _super.prototype.visualizza.call(this) + " | tipologia: " + LavoratoreTipo[this.tipologia];
+        return "Lavoratore: " + _super.prototype.visualizza.call(this) + " | tipologia: " + LavoratoreTipo[this.tipologia];
     };
     return Lavoratore;
 }(Elemento));
-var emilieLav = new Lavoratore("Emilie", LavoratoreTipo.Architetto);
+var emilieLav = new Lavoratore(LavoratoreTipo.Architetto);

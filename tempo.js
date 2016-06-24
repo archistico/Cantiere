@@ -5,7 +5,7 @@ var Tempo = (function () {
         this.dataCorrente = new Date();
     }
     Tempo.prototype.cicla = function () {
-        this.dataCorrente.setMinutes(this.dataCorrente.getMinutes() + 15);
+        this.dataCorrente.setHours(this.dataCorrente.getHours() + 1);
     };
     Tempo.prototype.start = function () {
         var _this = this;
@@ -15,15 +15,13 @@ var Tempo = (function () {
         clearTimeout(this.timer);
     };
     Tempo.prototype.visualizza = function () {
-        var day = this.dataCorrente.getUTCDate();
-        var month = this.dataCorrente.getUTCMonth() + 1;
-        var year = this.dataCorrente.getUTCFullYear();
-        var h = this.dataCorrente.getHours();
-        var m = this.dataCorrente.getMinutes();
-        var s = this.dataCorrente.getSeconds();
-        m = this.checkTime(m);
-        s = this.checkTime(s);
-        return day + "/" + month + "/" + year + " " + h + ":" + m + " soldi: € " + this.soldi;
+        var diff = Math.round(this.dataCorrente.valueOf() - this.dataIniziale.valueOf()) / 1000;
+        var days = parseInt(((diff / 86400)).toString());
+        var hours = parseInt(((diff / 3600) % 24).toString());
+        var minutes = parseInt(((diff / 60) % 60).toString());
+        var seconds = diff % 60;
+        var result = (hours < 10 ? "0" + hours : hours) + "-" + (minutes < 10 ? "0" + minutes : minutes) + "-" + (seconds < 10 ? "0" + seconds : seconds);
+        return "D:" + days + " H:" + hours + " M:" + minutes + " S:" + seconds;
     };
     Tempo.prototype.checkTime = function (i) {
         if (i < 10) {

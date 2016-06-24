@@ -18,12 +18,18 @@
   <![endif]-->
   <script src="elemento.js"></script>
   <script src="tempo.js"></script>
+  <script src="materiale.js"></script>
   <script type="text/javascript">
   function init() {
     console.log("JS INIZIATO");
     console.log(simulazione.visualizza());
 
     setInterval(() => aggiornaBind(),1000);
+  }
+  function caricaMateriali() {
+    var materialiPar = document.getElementById("materiali");
+    materialiPar.innerHTML = listaMateriali.visualizza();
+
   }
   function aggiungi() { aggiornaBind(); }
   function aggiornaBind() {
@@ -55,7 +61,8 @@
       <p></p>
     </div>
     <div class="tab-pane" id="tabMateriali"><h1>Materiali</h1>
-      <p></p>
+      <button onclick="caricaMateriali()">Carica</button>
+      <p id="materiali"></p>
     </div>
     <div class="tab-pane" id="tabAttrezzature"><h1>Attrezzature</h1>
       <p></p>

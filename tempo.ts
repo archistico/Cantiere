@@ -13,7 +13,8 @@ class Tempo
   }
 
   public cicla() {
-    this.dataCorrente.setMinutes(this.dataCorrente.getMinutes() + 15);
+    //this.dataCorrente.setMinutes(this.dataCorrente.getMinutes() + 15);
+    this.dataCorrente.setHours(this.dataCorrente.getHours() + 1);
   }
 
   public start() {
@@ -25,18 +26,15 @@ class Tempo
 
   public visualizza()
   {
-    var day = this.dataCorrente.getUTCDate();
-    var month = this.dataCorrente.getUTCMonth() + 1;
-    var year = this.dataCorrente.getUTCFullYear();
+    var diff = Math.round(this.dataCorrente.valueOf() - this.dataIniziale.valueOf())/1000;
+    var days = parseInt( ((diff / 86400) ).toString() );
+    var hours = parseInt( ((diff / 3600) % 24).toString() );
+    var minutes = parseInt(((diff / 60) % 60).toString() );
+    var seconds = diff % 60;
 
-    var h = this.dataCorrente.getHours();
-    var m = this.dataCorrente.getMinutes();
-    var s = this.dataCorrente.getSeconds();
+    var result = (hours < 10 ? "0" + hours : hours) + "-" + (minutes < 10 ? "0" + minutes : minutes) + "-" + (seconds  < 10 ? "0" + seconds : seconds);
 
-    m = this.checkTime(m);
-    s = this.checkTime(s);
-
-    return day + "/" + month + "/"+year + " " + h + ":" + m + " soldi: € "+this.soldi;
+    return "D:"+ days + " H:" + hours + " M:" + minutes + " S:"+seconds;
   }
 
   private checkTime(i) {
