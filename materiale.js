@@ -47,6 +47,9 @@ var Materiali = (function () {
     Materiali.prototype.quantita = function (tipo) {
         return this.lista[this.lista.indexOf(tipo)].quantita;
     };
+    Materiali.prototype.costo = function (tipo) {
+        return this.lista[this.lista.indexOf(tipo)].costo;
+    };
     return Materiali;
 }());
 var cemento = new Materiale(MaterialeTipo.Cemento, 600);

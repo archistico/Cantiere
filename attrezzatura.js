@@ -53,6 +53,9 @@ var Attrezzature = (function () {
     Attrezzature.prototype.quantita = function (tipo) {
         return this.lista[this.lista.indexOf(tipo)].quantita;
     };
+    Attrezzature.prototype.costo = function (tipo) {
+        return this.lista[this.lista.indexOf(tipo)].costo;
+    };
     return Attrezzature;
 }());
 var base = new Attrezzatura(AttrezzaturaTipo.Base, 150);

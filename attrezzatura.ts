@@ -44,6 +44,11 @@ class Attrezzature {
   {
     return this.lista[this.lista.indexOf(tipo)].quantita;
   }
+
+  costo(tipo : Attrezzatura)
+  {
+    return this.lista[this.lista.indexOf(tipo)].costo;
+  }
 }
 
 var base:Attrezzatura = new Attrezzatura(AttrezzaturaTipo.Base, 150);

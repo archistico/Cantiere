@@ -33,9 +33,11 @@
   }
 
   function compraMateriale(tipo) {
-    var costo = listaMateriali.compra(tipo);
-    simulazione.soldi -= costo;
-    caricaListaMateriali();
+    if(listaMateriali.costo(tipo)<simulazione.soldi) {
+      var costo = listaMateriali.compra(tipo);
+      simulazione.soldi -= costo;
+      caricaListaMateriali();
+    }
   }
 
   function caricaListaAttrezzature() {
@@ -44,9 +46,11 @@
   }
 
   function compraAttrezzatura(tipo) {
-    var costo = listaAttrezzature.compra(tipo);
-    simulazione.soldi -= costo;
-    caricaListaAttrezzature();
+    if(listaAttrezzature.costo(tipo)<simulazione.soldi) {
+      var costo = listaAttrezzature.compra(tipo);
+      simulazione.soldi -= costo;
+      caricaListaAttrezzature();
+    }
   }
 
   function aggiornaBind() {

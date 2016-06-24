@@ -44,6 +44,11 @@ class Materiali {
   {
     return this.lista[this.lista.indexOf(tipo)].quantita;
   }
+
+  costo(tipo : Materiale)
+  {
+    return this.lista[this.lista.indexOf(tipo)].costo;
+  }
 }
 
 var cemento:Materiale = new Materiale(MaterialeTipo.Cemento, 600);
