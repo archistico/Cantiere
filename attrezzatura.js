@@ -43,7 +43,7 @@ var Attrezzature = (function () {
     Attrezzature.prototype.righeTabella = function () {
         var risultato = "";
         for (var c = 0; c < this.lista.length; c++) {
-            risultato += "<tr><th scope='row'>" + this.lista[c].quantita + "</th><td>" + AttrezzaturaTipo[this.lista[c].tipologia] + "</td><td>" + this.lista[c].costo + " €</td><td><button>-</button><button onclick='compraAttrezzatura(" + AttrezzaturaTipo[this.lista[c].tipologia].toLowerCase() + ")'>+</button></td></tr>";
+            risultato += "<tr><td scope='row'>" + this.lista[c].quantita + "</th><td>" + AttrezzaturaTipo[this.lista[c].tipologia] + "</td><td>" + this.lista[c].costo + " €</td><td><button>-</button><button onclick='compraAttrezzatura(" + AttrezzaturaTipo[this.lista[c].tipologia].toLowerCase() + ")'>+</button></td></tr>";
         }
         return risultato;
     };

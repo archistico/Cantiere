@@ -20,6 +20,7 @@
   <script src="tempo.js"></script>
   <script src="materiale.js"></script>
   <script src="attrezzatura.js"></script>
+  <script src="cantiere.js"></script>
   <script type="text/javascript">
   function init() {
     console.log("JS INIZIATO");
@@ -30,6 +31,11 @@
   function caricaListaMateriali() {
     var TabellaMateriali = document.getElementById("TabellaMateriali");
     TabellaMateriali.innerHTML = listaMateriali.righeTabella();
+  }
+
+  function caricaListaCantieri() {
+    var TabellaCantieri = document.getElementById("TabellaCantieri");
+    TabellaCantieri.innerHTML = listaCantieri.righeTabella();
   }
 
   function compraMateriale(tipo) {
@@ -63,7 +69,7 @@
   <h1>Gestionale - Cantiere</h1>
   <p id="tempo"></p>
   <ul class="nav nav-tabs" id="mioTab">
-    <li class="active"><a href="#tabCantieri" data-toggle="tab">Cantieri</a></li>
+    <li class="active"><a href="#tabCantieri" data-toggle="tab" onclick="caricaListaCantieri()">Cantieri</a></li>
     <li><a href="#tabLavoratori" data-toggle="tab">Lavoratori</a></li>
     <li><a href="#tabMateriali" data-toggle="tab" onclick="caricaListaMateriali()">Materiali</a></li>
     <li><a href="#tabAttrezzature" data-toggle="tab" onclick="caricaListaAttrezzature()">Attrezzature</a></li>
@@ -81,6 +87,19 @@
           </tr>
         </thead>
         <tbody id="TabellaCantieri">
+          <tr>
+            <td scope='row'>Bagno</td>
+            <td>100</td>
+            <td>1 muratore</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 20%;">
+                  20%
+                </div>
+              </div>
+            </td>
+            <td><button>-</button><button>+</button></td>
+          </tr>
         </tbody>
       </table>
     </div>
